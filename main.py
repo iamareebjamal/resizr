@@ -23,7 +23,8 @@ class ImageHandler(webapp2.RequestHandler):
             cache.put()
         else:
             output = cached.image
-        self.response.headers['Content-Type'] = 'image/jpeg'
+        self.response.headers['Content-Type'] = 'image/png'
+        self.response.headers['Cache-Control'] = 'max-age=3600'
         self.response.write(output)
 
 class MainPage(webapp2.RequestHandler):
